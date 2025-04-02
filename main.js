@@ -1,3 +1,33 @@
+//TestMonster
+const debugMonster = {
+    name: "Base Slime",
+    hp: 10,
+    minXp: 5,
+    maxXp: 10,
+    minGold: 5,
+    maxGold: 15,
+
+    takeDamage:() => {
+
+    },
+
+    dropXp: (target) => {
+
+    },
+
+    dropGold: (target) => {
+
+    }
+}
+
+const player ={
+    xp: 0,
+    damage: 0,
+    gold: 0,
+}
+
+
+
 
 //HTML Var Setups
 const DAMAGE_HTML = document.getElementById("damage_html");

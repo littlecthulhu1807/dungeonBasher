@@ -1,10 +1,10 @@
-/*Reset*/
+/*----------Reset----------*/
 *{
     margin: 0;
     padding: 0;
 }
 
-/*Body*/
+/*----------Body----------*/
 
 .game_container{
     background: black;
@@ -19,38 +19,123 @@
     grid-template-rows: repeat(4,1fr);
 }
 
-.game_container_left{
-    background: red;
-    text-align: center;
-    grid-row: span 4;
-    width: 100%;
-    height: 100%;
-}
-
+/*----------top----------*/
 .game_container_top{
+    position: relative;
+    color: white;
     background: blue;
     text-align: center;
     grid-column: span 2;
     width: 100%;
     height: 100%;
+    background-image: url("./assets/BG_Placeholder.png");
 }
 
-.game_container_right{
+.disclaimer{
+    font-size: 0.5rem;
+}
+
+.game_container_top h1{
+    z-index: 10;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.statistics_container{
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+    /*----------Left----------*/
+.game_container_left{
+    position: relative;
     background: red;
     text-align: center;
     grid-row: span 4;
-    width: 100%;
+    width: 105%;
     height: 100%;
+    background-image: url("./assets/BG_Placeholder.png");
+    background-repeat: repeat-y;
+    padding: 20px;
 }
 
-    /*Center*/
+.game_container_left *{
+    color: #fff;
+}
+
+/*----------right----------*/
+.game_container_right{
+    position: relative;
+    background: red;
+    text-align: center;
+    grid-row: span 4;
+    width: 105%;
+    height: 100%;
+    background-image: url("./assets/BG_Placeholder.png");
+    background-repeat: repeat-y;
+    padding: 20px;
+}
+
+.game_container_right *{
+    color: #fff;
+}
+
+
+    /*----------Center----------*/
 .game_container_center{
-    background: gray;
+    background: grey;
     text-align: center;
     grid-column: span 2;
     grid-row: span 3;
     width: 100%;
     height: 100%;
+    position: relative;
+}
+
+.center_ui{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+.center_health_bar{
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    border-radius: 20px;
+    height: 40px;
+    width: 400px;
+    z-index: 1;
+    margin-bottom: 15px;
+}
+
+.center_health_bar_progress{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: repeating-linear-gradient(to right, #ffb3b3, #ba2727, #690000);
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    transition: 0.1s ease;
+    z-index: 2;
+}
+
+#healthbar_text{
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .center_attack_bar{
@@ -73,10 +158,27 @@
     z-index: 2;
 }
 
+.center_visuals{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #00ff3c;
+}
+
+#monster_image{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}
 
 
 
-/*Mobile Screens*/
+
+/*----------Mobile Screens----------*/
 @media screen and (max-width: 960px){
     .game_container{
         background: black;
