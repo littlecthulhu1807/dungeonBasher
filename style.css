@@ -175,6 +175,53 @@
     transform: translate(-50%, -50%);
 }
 
+#weapon_image{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    transform: scale(1.2);
+
+}
+
+#weapon_image.active{
+    transform: scale(1);
+
+}
+
+.fade-up {
+    animation: fade-up 1s;
+}
+
+@keyframes fade-up {
+    0%{
+        transform: translateY(0);
+        opacity: 0.9;
+    }
+    20%{
+        transform: translateY(-5px);
+        opacity: 0.8;
+    }
+    40%{
+        transform: translateY(-15px);
+        opacity: 0.6;
+    }
+    60%{
+        transform: translateY(-25px);
+        opacity: 0.4;
+    }
+    80%{
+        transform: translateY(-45px);
+        opacity: 0.2;
+    }
+    100%{
+        transform: translateY(-75px);
+        opacity: 0;
+    }
+}
+
 
 
 
