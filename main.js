@@ -1,22 +1,10 @@
-//TestMonster
-class Monster{
-
-    Monster(name,hp,minXp,maxXp,minGold,maxGold){
-
-    };
-}
-
-class Player{
-
-    Player(name, xp, damage, gold, level){
-
-    };
-}
-
+import {Monster} from "./gameLogic/monster.js"
+import {Player} from "./gameLogic/player.js"
 
 //HTML Var Setups
 const DAMAGE_HTML = document.getElementById("damage_html");
-let damageValue = parseFloat(DAMAGE_HTML.innerHTML)
+const GOLD_HTML = document.getElementById("gold_html");
+const XP_HTML = document.getElementById("xp_html");
 
 const ATTACKBAR = document.querySelector(".center_attack_bar");
 const ATTACKBARPROGRESS = document.querySelector(".center_attack_bar_progress");
@@ -25,6 +13,13 @@ const CENTER_CONTAINER_HTML = document.querySelector(".game_container_center");
 
 const WEAPON_IMAGE_HTML = document.getElementById("weapon_image");
 const MONSTER_IMAGE_HTML = document.getElementById("monster_image");
+
+const MONSTER_HEALTHBAR_PROGRESS_HTML = document.querySelector(".center_health_bar_progress");
+
+const MONSTER_HP_Current_HTML = document.getElementById("healthbar_current_val");
+const MONSTER_HP_MAX_HTML = document.getElementById("healthbar_max_val");
+let monsterHpCurrentValue = parseFloat(MONSTER_HP_Current_HTML.innerHTML);
+let monsterHpMaxValue = parseFloat(MONSTER_HP_MAX_HTML.innerHTML);
 
 
 
@@ -35,11 +30,14 @@ let attackSpeed = 2000;
 let deltaTimeInterval = 100;
 let timer = 0;
 
+//debug Values
+let damageValue = parseFloat(DAMAGE_HTML.innerHTML);
+let goldValue = parseFloat(GOLD_HTML.innerHTML);
+let xpValue = parseFloat(XP_HTML.innerHTML);
+
 
 //Game Functions
 function attack(){
-    console.log(`Attacked for ${damageValue} damage`);
-
     //visual effects
     WEAPON_IMAGE_HTML.classList.toggle(`active`);
 
@@ -49,6 +47,22 @@ function attack(){
     div.style.cssText = `color: red; position: absolute; top: 50%; left: 50%; font-size: 1.5rem; pointer-events: none; z-index: 10; font-weight: bold;`
     CENTER_CONTAINER_HTML.appendChild(div);
 
+    //attack
+    monsterHpCurrentValue = monsterHpCurrentValue - damageValue;
+    if (monsterHpCurrentValue <= 0){
+        monsterHpCurrentValue = 10;
+
+        goldValue += 10;
+        xpValue += 5;
+    }
+    GOLD_HTML.innerHTML = goldValue;
+    XP_HTML.innerHTML = xpValue;
+    MONSTER_HP_Current_HTML.innerHTML = monsterHpCurrentValue;
+    MONSTER_HEALTHBAR_PROGRESS_HTML.style.width = `${((monsterHpCurrentValue / monsterHpMaxValue) * 100)}%`
+
+
+
+    //Indicator and reset
     div.classList.add(`fade-up`);
     timeout(div);
     reset();

@@ -27,13 +27,15 @@
         <div class="game_container_top">
             <h1 class="title">DUNGEON BASHER</h1>
             <div class="statistics_container">
-                <p class="damage_display"><span id="damage_html">1</span> damage</p>
-                hp stamina gold xp <br>
-                <span class="disclaimer">
+                <p class="damage_display"><span class="statistics_display" id="damage_html">1</span> Damage</p>
+                <p class="gold_display"><span class="statistics_display" id="gold_html">1</span> Gold</p>
+                <p class="xp_display"><span class="statistics_display" id="xp_html">1</span> XP</p>
+                <br>
+            </div>
+            <span class="disclaimer">
                 DISCLAIMER: BACKGROUND TEXTURE PLACEHOLDER BY: <br>
                 https://www.craiyon.com/image/IHKgqyUjQ06w5bdzVNWKYg
                 </span>
-            </div>
         </div>
 
 
@@ -52,7 +54,7 @@
             <div class="center_ui">
                 <div class="center_health_bar">
                     <div class="center_health_bar_progress"></div>
-                    <p id="healthbar_text">Monster: hp/hp</p>
+                    <p id="healthbar_text">Monster: <span id="healthbar_current_val">10</span>/<span id="healthbar_max_val">10</span></p>
                 </div>
                 <div class="center_attack_bar">
                     <div class="center_attack_bar_progress"></div>
@@ -66,6 +68,6 @@
 
     </div>
 
-    <script src="./main.js"></script>
+    <script type="module" src="./main.js"></script>
 </body>
 </html>
